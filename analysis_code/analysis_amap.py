@@ -20,6 +20,8 @@ def get_args():
     parser.add_argument('--max_steps', type=int, default=2000)
     parser.add_argument('--calc_misclassified_sample', default=False, action='store_true', help="Whether to calculate misclassified sample")
     parser.add_argument('--is_BTAD', default = False, action="store_true", help="Whether to use BTAD dataset")
+    parser.add_argument('--is_AeBAD', default=False, action="store_true", help="Whether to use AeBAD dataset")
+    parser.add_argument('--is_VisA', default=False, action="store_true", help="Whether to use VisA dataset")
     parser.add_argument('--is_MVTec_small', default = False, action="store_true", help="Whether to use MVTec_small dataset")
 
     args = parser.parse_args()
