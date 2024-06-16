@@ -46,4 +46,4 @@ python analysis_code/convert_result_format.py --before_result_root_dir ./result/
 # Add argument "--visualize" to visualize anomaly map on "./result/ensemble_ravel/viz" repository.
 # If you want to find misclassified images with trained model, add argument "--calc_misclassified_sample" and indices of false positive samples and false negative samples will be presented on "./result/ensemble_ravel/misclassified_sample_list.csv"
 # In addition, add "--calc_pro" argument to additionally calculate AUPRO score. The result will presented on "./result/ensemble_ravel/score_result.csv".
-python analysis_code/analysis_amap.py --project_root_path ./result/WR101_ravel --visualize
+python analysis_code/analysis_amap.py --project_root_path ./result/WR101_ravel --visualize --compare_with_patchcore
