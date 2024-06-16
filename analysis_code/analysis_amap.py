@@ -202,14 +202,20 @@ if __name__ == '__main__':
     ensemble_result_dir = Path(os.path.join(args.project_root_path, "viz"))
     ensemble_result_dir.mkdir(parents=True, exist_ok=True)
     
-    category_border = [0, 83, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
-    category_list = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw', 'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
+    category_border = [0, 83]#, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
+    category_list = ['bottle']#, 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw', 'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
     if args.is_MVTec_small :
         category_border = [0, 25]
         category_list = ['bottle']
     if args.is_BTAD :
         category_border = [0, 70, 300, 741]
         category_list = ['01', '02', '03']
+    if args.is_AeBAD :
+        category_border = [0, 342, 653, 1380, 1818]
+        category_list = ['background', 'illumination', 'same', 'view']
+    if args.is_VisA :
+        category_border = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+        category_list = ['candle', 'capsules', 'cashew', 'chewinggum', 'fryum', 'macaroni1','macaroni2', 'pcb1', 'pcb2', 'pcb3', 'pcb4', 'pipe_fryum']
     
     gt_list = []
     amap_list = [] 
