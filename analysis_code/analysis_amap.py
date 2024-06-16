@@ -204,8 +204,8 @@ if __name__ == '__main__':
     ensemble_result_dir = Path(os.path.join(args.project_root_path, "viz"))
     ensemble_result_dir.mkdir(parents=True, exist_ok=True)
     
-    category_border = [0, 83]#, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
-    category_list = ['bottle']#, 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw', 'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
+    category_border = [0, 83, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
+    category_list = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw', 'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
     if args.is_MVTec_small :
         category_border = [0, 25]
         category_list = ['bottle']
