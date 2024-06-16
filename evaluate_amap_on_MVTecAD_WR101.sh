@@ -3,7 +3,7 @@
 # Note that dataset should be in directory of "--dataset_path" argument. 
 # If you want other pretrained network rather than WideResNet101-2, change "--backbone" argument.
 
-python train_coreset_distribution.py --category bottle --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/MVTecAD --num_workers 24
+python train_coreset_distribution.py --category bottle --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/MVTecAD
 #python train_coreset_distribution.py --category cable --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/MVTecAD
 #python train_coreset_distribution.py --category capsule --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/MVTecAD
 #python train_coreset_distribution.py --category carpet --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/MVTecAD
