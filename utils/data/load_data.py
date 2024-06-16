@@ -278,7 +278,7 @@ def Train_Dataloader(args):
         image_datasets = AeBADDataset(args, root=os.path.join(args.dataset_path,args.category), transform=data_transforms, gt_transform=gt_transforms, phase='train')
     elif args.dataset_category =='VisA':
         image_datasets = VisADataset(args, root=os.path.join(args.dataset_path,args.category), transform=data_transforms, gt_transform=gt_transforms, phase='train')
-    train_loader = DataLoader(image_datasets, batch_size=1, shuffle=True, num_workers=args.num_workers, pin_memory=True)
+    train_loader = DataLoader(image_datasets, batch_size=1, shuffle=True, num_workers=int(args.num_workers), pin_memory=True)
     return train_loader
 
 def Test_Dataloader(args):
@@ -293,7 +293,7 @@ def Test_Dataloader(args):
         test_datasets = AeBADDataset(args, root=os.path.join(args.dataset_path,args.category), transform=data_transforms, gt_transform=gt_transforms, phase='test')
     elif args.dataset_category == 'VisA':
         test_datasets = VisADataset(args, root=os.path.join(args.dataset_path,args.category), transform=data_transforms, gt_transform=gt_transforms, phase='test')
-    test_loader = DataLoader(test_datasets, batch_size=1, shuffle=False, num_workers=args.num_workers, pin_memory=True)
+    test_loader = DataLoader(test_datasets, batch_size=1, shuffle=False, num_workers=int(args.num_workers), pin_memory=True)
     return test_loader
     
 class Distribution_Dataset_Generator():
