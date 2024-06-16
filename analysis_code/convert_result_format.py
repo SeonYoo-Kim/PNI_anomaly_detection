@@ -13,6 +13,8 @@ def get_args():
     parser.add_argument('--before_result_root_dir', default=r'../result/ensemble_result')
     parser.add_argument('--after_result_root_dir', default=r'../result/ensemble_ravel')
     parser.add_argument('--is_BTAD', default = False, action="store_true", help="Whether to use BTAD dataset")
+    parser.add_argument('--is_AeBAD', default=False, action="store_true", help="Whether to use AeBAD dataset")
+    parser.add_argument('--is_VisA', default=False, action="store_true", help="Whether to use VisA dataset")
     parser.add_argument('--is_MVTec_small', default = False, action="store_true", help="Whether to use MVTec_small dataset")
     args = parser.parse_args()
     return args
@@ -30,6 +32,12 @@ if __name__ == '__main__':
     if args.is_BTAD :
         category_border = [0, 70, 300, 741]
         category_list = ['01', '02', '03']
+    if args.is_AeBAD :
+        category_border = [0, 342, 653, 1380, 1818]
+        category_list = ['background', 'illumination', 'same', 'view']
+    if args.is_VisA :
+        category_border = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+        category_list = ['candle', 'capsules', 'cashew', 'chewinggum', 'fryum', 'macaroni1','macaroni2', 'pcb1', 'pcb2', 'pcb3', 'pcb4', 'pipe_fryum']
 
     total_amap_pkl_path_list = []
     total_gt_path_list = []

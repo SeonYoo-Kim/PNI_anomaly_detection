@@ -12,7 +12,7 @@ def get_args():
     parser.add_argument('--train_nb_dist', default=False, action='store_true', help="Whether to train normal feature distribution from neighborhood information")
     parser.add_argument('--train_coor_dist', default=False, action='store_true', help="Whether to train normal feature distribution from position information")
     parser.add_argument('--dataset_path', default='../dataset/MVTecAD', help="root directory of dataset")
-    parser.add_argument('--dataset_category', choices=['MVTec', 'BTAD'], default='MVTec', help="select type of dataset") # MVTec
+    parser.add_argument('--dataset_category', choices=['MVTec', 'BTAD', 'AeBAD', 'VisA'], default='MVTec', help="select type of dataset") # MVTec
     parser.add_argument('--category', default='hazelnut') # for BTAD, category is ["01, "02", 03"]
     parser.add_argument('--project_root_path', default=r'./result', help="default directory of result")
     parser.add_argument('--gpu', type=int, default=0)
@@ -60,6 +60,10 @@ if __name__ == '__main__':
         args.embedding_dir_path = os.path.join('./', f'embeddings_{"+".join(args.layer_index)}', args.category, args.backbone)
     elif args.dataset_category == "BTAD" :
         args.embedding_dir_path = os.path.join('./', 'BTAD_embedding', f'embeddings_{"+".join(args.layer_index)}', args.category, args.backbone)
+    elif args.dataset_category == "AeBAD" :
+        args.embedding_dir_path = os.path.join('./', 'AeBAD_embedding', f'embeddings_{"+".join(args.layer_index)}', args.category, args.backbone)
+    elif args.dataset_category == "VisA" :
+        args.embedding_dir_path = os.path.join('./', 'VisA_embedding', f'embeddings_{"+".join(args.layer_index)}', args.category, args.backbone)
     os.makedirs(args.embedding_dir_path, exist_ok=True)
     
     if args.backbone == 'DN201' :        
