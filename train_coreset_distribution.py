@@ -74,38 +74,38 @@ if __name__ == '__main__':
 
     # generate embedding coreset and distribution coreset and save it to faiss
     if args.train_coreset :
-        print("Start generating embeeding coreset and distribution coreset")
+        print("==========Start generating embeeding coreset and distribution coreset==========")
         coreset_generator_trainer = pl.Trainer.from_argparse_args(args, default_root_dir=os.path.join(default_root_dir, 'coreset'), max_epochs=1, gpus=1, enable_checkpointing=False)
         coreset_generator = Coreset(args)
         coreset_generator_trainer.fit(coreset_generator, train_dataloaders=train_dataloader)
-        print("End generating embeeding coreset and distribution coreset")
+        print("==========End generating embeeding coreset and distribution coreset==========")
 
     # generate Distribution train dataloader for training coreset distribution
     distribution_train_dataloader, distribution_val_dataloader, dist_input_size, dist_output_size = Distribution_Train_Dataloader(args, train_dataloader)
     
     # train normal feature distribution from neighbrohood information
     if args.train_nb_dist:
-        print("Start training normal feature distribution from neighbrohood information")
+        print("==========Start training normal feature distribution from neighbrohood information==========")
         tb_logger = TensorBoardLogger(save_dir=default_root_dir, name="distribution")
         distribution_trainer = pl.Trainer.from_argparse_args(args, max_epochs=args.num_epochs, gpus=1, logger=tb_logger, log_every_n_steps=50, enable_checkpointing=False) 
         distribution_model = Distribution(args, dist_input_size, dist_output_size)
         distribution_trainer.fit(distribution_model, train_dataloaders=distribution_train_dataloader, val_dataloaders=distribution_val_dataloader)
-        print("End training normal feature distribution from neighbrohood information")
+        print("==========End training normal feature distribution from neighbrohood information==========")
     
     # train normal feature distribution from position information
     if args.train_coor_dist:
-        print("Start training normal feature distribution from position information")
+        print("==========Start training normal feature distribution from position information==========")
         coor_distribution_train_dataloader, coor_dist_input_size, coor_dist_output_size = Coor_Distribution_Train_Dataloader(args, train_dataloader, with_edge = False)
         coor_distribution_trainer = Coor_Distribution(args, coor_dist_input_size, coor_dist_output_size, with_edge=False)
         coor_distribution_trainer.fit(coor_distribution_train_dataloader)
         coor_distribution_train_dataloader, coor_dist_input_size, coor_dist_output_size = Coor_Distribution_Train_Dataloader(args, train_dataloader, with_edge = True)
         coor_distribution_trainer = Coor_Distribution(args, coor_dist_input_size, coor_dist_output_size, with_edge=True)
         coor_distribution_trainer.fit(coor_distribution_train_dataloader)
-        print("End training normal feature distribution from position information")
+        print("==========End training normal feature distribution from position information==========")
 
     # inference, evaluate anomaly score from test_dataloader
-    print("Start evaluating anomaly score")
+    print("==========Start evaluating anomaly score==========")
     anomaly_calculator = pl.Trainer.from_argparse_args(args, default_root_dir=os.path.join(default_root_dir, 'anomaly'), max_epochs=1, gpus=1, enable_checkpointing=False) #, check_val_every_n_epoch=args.val_freq,  num_sanity_val_steps=0) # ,fast_dev_run=True)
     ac_model = AC_Model(args, dist_input_size, dist_output_size)
     anomaly_calculator.test(ac_model, dataloaders=test_dataloader)
-    print("End evaluating anomaly score")
+    print("==========End evaluating anomaly score==========")

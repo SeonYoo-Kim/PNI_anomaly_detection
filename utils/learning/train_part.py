@@ -81,9 +81,9 @@ def cal_confusion_matrix(y_true, y_pred_no_thresh, thresh, img_path_list):
 
     cm = confusion_matrix(y_true, pred_thresh)
     print(cm)
-    print('false positive')
+    print('==========false positive==========')
     print(false_p)
-    print('false negative')
+    print('==========false negative==========')
     print(false_n)
 
 def calc_prob_embedding(distances, gamma):
@@ -187,8 +187,8 @@ class Coreset(pl.LightningModule):
         self.dist_coreset_index.add(self.dist_coreset)
         faiss.write_index(self.dist_coreset_index, os.path.join(self.embedding_dir_path,f'dist_coreset_index_{self.args.dist_coreset_size}.faiss'))
         
-        print('Size of embedding coreset without edge feature : ', self.embedding_coreset.shape)
-        print('Size of distribution coreset without edge feature : ', self.dist_coreset.shape)
+        print('==========Size of embedding coreset without edge feature : ', self.embedding_coreset.shape, "==========")
+        print('==========Size of distribution coreset without edge feature : ', self.dist_coreset.shape, "==========")
         
         ## generate embedding coreset with edge feature
         total_embeddings_with_edge = np.array(self.embedding_with_edge_list)
@@ -207,7 +207,7 @@ class Coreset(pl.LightningModule):
         self.embedding_coreset_index.add(self.embedding_coreset)
         faiss.write_index(self.embedding_coreset_index, os.path.join(self.embedding_dir_path,f'embedding_coreset_index_{int(self.args.subsampling_percentage*100)}_with_edge.faiss'))
 
-        print('Size of embedding coreset with edge feature : ', self.embedding_coreset.shape)
+        print('==========Size of embedding coreset with edge feature : ', self.embedding_coreset.shape, "==========")
 
     def configure_optimizers(self):
         return None

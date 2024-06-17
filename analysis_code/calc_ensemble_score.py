@@ -78,7 +78,7 @@ def cvt2heatmap(gray):
         
 if __name__ == '__main__':
     args = get_args()
-    print(f"Start ensemble {args.category}!")
+    print(f"==========Start ensemble {args.category}!==========")
     ensemble_result_dir = Path(os.path.join(args.ensemble_root_path, args.category))
     ensemble_result_dir.mkdir(parents=True, exist_ok=True)
     
@@ -157,9 +157,9 @@ if __name__ == '__main__':
     f.write(data)
     f.close()
     
-    print(f"End ensemble {args.category}!")
+    print(f"==========End ensemble {args.category}!===========")
     
-    print(f"Start save ensemble {args.category}!")
+    print(f"==========Start save ensemble {args.category}!==========")
     
     for idx, fname in enumerate(fname_list) :
         fname = fname.split("/")[-1]

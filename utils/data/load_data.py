@@ -67,7 +67,7 @@ class MVTecDataset(Dataset):
             gt = Image.open(gt)
             gt = self.gt_transform(gt)
         
-        assert img.size()[1:] == gt.size()[1:], "image.size != gt.size !!!"
+        assert img.size()[1:] == gt.size()[1:], "==========image.size != gt.size !!!=========="
 
 
         return img, gt, label, os.path.basename(img_path[:-4]), img_type
@@ -115,7 +115,7 @@ class BTADDataset(Dataset):
                 tot_labels.extend([1]*len(img_paths))
                 tot_types.extend([defect_type]*len(img_paths))
 
-        assert len(img_tot_paths) == len(gt_tot_paths), "Something wrong with test and ground truth pair!"
+        assert len(img_tot_paths) == len(gt_tot_paths), "==========Something wrong with test and ground truth pair!=========="
         
         return img_tot_paths, gt_tot_paths, tot_labels, tot_types
 
@@ -181,7 +181,7 @@ class AeBADDataset(Dataset):
                 tot_labels.extend([1] * len(img_paths))
                 tot_types.extend([defect_type] * len(img_paths))
 
-        assert len(img_tot_paths) == len(gt_tot_paths), "Something wrong with test and ground truth pair!"
+        assert len(img_tot_paths) == len(gt_tot_paths), "==========Something wrong with test and ground truth pair!=========="
 
         return img_tot_paths, gt_tot_paths, tot_labels, tot_types
 
@@ -245,7 +245,7 @@ class VisADataset(Dataset):
                 tot_labels.extend([1] * len(img_paths))
                 tot_types.extend([defect_type] * len(img_paths))
 
-        assert len(img_tot_paths) == len(gt_tot_paths), "Something wrong with test and ground truth pair!"
+        assert len(img_tot_paths) == len(gt_tot_paths), "==========Something wrong with test and ground truth pair!=========="
 
         return img_tot_paths, gt_tot_paths, tot_labels, tot_types
 
@@ -262,7 +262,7 @@ class VisADataset(Dataset):
             gt = Image.open(gt)
             gt = self.gt_transform(gt)
 
-        assert img.size()[1:] == gt.size()[1:], "image.size != gt.size !!!"
+        assert img.size()[1:] == gt.size()[1:], "==========image.size != gt.size !!!=========="
 
         return img, gt, label, os.path.basename(img_path[:-4]), img_type
 
