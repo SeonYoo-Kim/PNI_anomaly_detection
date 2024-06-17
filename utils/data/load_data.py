@@ -226,7 +226,7 @@ class VisADataset(Dataset):
 
         for defect_type in defect_types:
             if defect_type == 'good':
-                img_paths = glob.glob(os.path.join(self.img_path, defect_type) + "/*.png")
+                img_paths = glob.glob(os.path.join(self.img_path, defect_type) + "/*.JPG")
                 img_paths.extend(glob.glob(os.path.join(self.img_path, defect_type) + "/*.bmp"))
                 img_paths.sort()
                 img_tot_paths.extend(img_paths)
@@ -234,7 +234,7 @@ class VisADataset(Dataset):
                 tot_labels.extend([0] * len(img_paths))
                 tot_types.extend(['good'] * len(img_paths))
             else:
-                img_paths = glob.glob(os.path.join(self.img_path, defect_type) + "/*.png")
+                img_paths = glob.glob(os.path.join(self.img_path, defect_type) + "/*.JPG")
                 img_paths.extend(glob.glob(os.path.join(self.img_path, defect_type) + "/*.bmp"))
                 gt_paths = glob.glob(os.path.join(self.gt_path, defect_type) + "/*.png")
                 gt_paths.extend(glob.glob(os.path.join(self.gt_path, defect_type) + "/*.bmp"))
