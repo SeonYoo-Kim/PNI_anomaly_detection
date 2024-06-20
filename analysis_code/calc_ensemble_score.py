@@ -191,3 +191,5 @@ if __name__ == '__main__':
         cv2.imwrite(amap_png_path, cvt2heatmap(min_max_norm(amap) * 255))
         with open(amap_pkl_path, "wb") as fp :
             pickle.dump(amap, fp)
+
+    print("\n\n==========End of calc_ensemble_score==========\n\n")
