@@ -20,6 +20,7 @@ def get_args():
     return args
 
 if __name__ == '__main__':
+    print(f"==========Start converting result format!==========")
     args = get_args()
     after_result_root_dir = Path(args.after_result_root_dir)
     after_result_root_dir.mkdir(parents=True, exist_ok=True)
@@ -81,3 +82,4 @@ if __name__ == '__main__':
         numpngw.write_png(after_amap_path, after_amap)
         numpngw.write_png(after_gt_path, after_gt)
         numpngw.write_png(after_img_path, img)
+    print(f"==========End converting result format!==========")
