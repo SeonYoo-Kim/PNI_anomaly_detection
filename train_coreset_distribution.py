@@ -106,7 +106,9 @@ if __name__ == '__main__':
     # inference, evaluate anomaly score from test_dataloader
     print("\n==========Start evaluating anomaly score==========")
     anomaly_calculator = pl.Trainer.from_argparse_args(args, default_root_dir=os.path.join(default_root_dir, 'anomaly'), max_epochs=1, gpus=1, enable_checkpointing=False) #, check_val_every_n_epoch=args.val_freq,  num_sanity_val_steps=0) # ,fast_dev_run=True)
+    print("=======complete1========")
     ac_model = AC_Model(args, dist_input_size, dist_output_size)
+    print("=======complete2========")
     anomaly_calculator.test(ac_model, dataloaders=test_dataloader)
     print("\n==========End evaluating anomaly score==========")
     print("\n\n==========End of train_coreset_distribution==========\n\n")

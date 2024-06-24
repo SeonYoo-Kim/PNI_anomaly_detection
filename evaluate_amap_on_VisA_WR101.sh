@@ -6,6 +6,7 @@
 python train_coreset_distribution.py --category candle --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
 python train_coreset_distribution.py --category capsules --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
 python train_coreset_distribution.py --category cashew --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
+python train_coreset_distribution.py --category chewinggum --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
 python train_coreset_distribution.py --category fryum --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
 python train_coreset_distribution.py --category macaroni1 --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
 python train_coreset_distribution.py --category macaroni2 --seed 23 --train_coreset --train_nb_dist --train_coor_dist --dataset_path ../dataset/VisA --dataset_category VisA
@@ -21,6 +22,7 @@ python train_coreset_distribution.py --category pipe_fryum --seed 23 --train_cor
 python analysis_code/calc_ensemble_score.py --category candle --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
 python analysis_code/calc_ensemble_score.py --category capsules --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
 python analysis_code/calc_ensemble_score.py --category cashew --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
+python analysis_code/calc_ensemble_score.py --category chewinggum --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
 python analysis_code/calc_ensemble_score.py --category fryum --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
 python analysis_code/calc_ensemble_score.py --category macaroni1 --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
 python analysis_code/calc_ensemble_score.py --category macaroni2 --backbone_list WR101 --project_root_path ./result --ensemble_root_path ./result/WR101_result
