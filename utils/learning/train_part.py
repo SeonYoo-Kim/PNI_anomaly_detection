@@ -192,19 +192,26 @@ class Coreset(pl.LightningModule):
         
         ## generate embedding coreset with edge feature
         total_embeddings_with_edge = np.array(self.embedding_with_edge_list)
-        
+        print('======check1======')
         # Coreset Subsampling
         embedding_coreset_size = int(self.args.subsampling_percentage * total_embeddings_with_edge.shape[0])
+        print('======check2======')
         dist_coreset_size = self.args.dist_coreset_size
+        print('======check3======')
         max_coreset_size = max(embedding_coreset_size, dist_coreset_size)
+        print('======check4======')
 
         selector = kCenterGreedy(embedding=torch.Tensor(total_embeddings_with_edge), sampling_size=max_coreset_size)
+        print('======check5======')
         selected_idx = selector.select_coreset_idxs()
+        print('======check6======')
         self.embedding_coreset = total_embeddings_with_edge[selected_idx][:embedding_coreset_size]
-        
+        print('======check7======')
         # save to faiss
         self.embedding_coreset_index = faiss.IndexFlatL2(self.embedding_coreset.shape[1])
+        print('======check8======')
         self.embedding_coreset_index.add(self.embedding_coreset)
+        print('======check9======')
         faiss.write_index(self.embedding_coreset_index, os.path.join(self.embedding_dir_path,f'embedding_coreset_index_{int(self.args.subsampling_percentage*100)}_with_edge.faiss'))
 
         print('==========Size of embedding coreset with edge feature : ', self.embedding_coreset.shape, "==========")
