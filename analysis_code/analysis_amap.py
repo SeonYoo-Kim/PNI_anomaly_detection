@@ -200,7 +200,7 @@ def cal_pro_metric_new(labeled_imgs, score_imgs, fpr_thresh=0.3, max_steps=2000,
         
 if __name__ == '__main__':
     args = get_args()
-    print(f"Start calculating anomaly score!")
+    print(f"==========Start calculating anomaly score!==========")
     ensemble_result_dir = Path(os.path.join(args.project_root_path, "viz"))
     ensemble_result_dir.mkdir(parents=True, exist_ok=True)
     
