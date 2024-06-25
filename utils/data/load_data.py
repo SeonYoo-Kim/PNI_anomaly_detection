@@ -206,9 +206,12 @@ class VisADataset(Dataset):
     def __init__(self, args, root, transform, gt_transform, phase):
         if phase == 'train':
             self.img_path = os.path.join(root, 'train')
+            print("success train phase")
         else:
             self.img_path = os.path.join(root, 'test')
+            print("success test phase")
             self.gt_path = os.path.join(root, 'ground_truth')
+            print("success getting gt_path")
         self.transform = transform
         self.gt_transform = gt_transform
         # load dataset
