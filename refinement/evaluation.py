@@ -8,7 +8,7 @@ def run(args):
                      'screw',
                      'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
     category_border = [0, 83, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
-    
+
     if args.is_MVTec_small:
         category_border = [0, 25]
         category_list = ['bottle']
