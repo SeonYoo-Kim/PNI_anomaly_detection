@@ -17,6 +17,9 @@ def get_args():
     parser.add_argument('--category', default='bottle') # for BTAD, category is ["01, "02", 03"]
     parser.add_argument('--input_data_path', default=os.path.join('result','ensemble_ravel'), help="convert result format of main algorithm")
     parser.add_argument('--output_data_path', default=os.path.join('result','refined_ravel'), help="output directory for refined results")
+    parser.add_argument('--is_BTAD', default=False, action="store_true", help="Whether to use BTAD dataset")
+    parser.add_argument('--is_AeBAD', default=False, action="store_true", help="Whether to use AeBAD dataset")
+    parser.add_argument('--is_VisA', default=False, action="store_true", help="Whether to use VisA dataset")
     parser.add_argument('--size_patch_gt', default=(240, 240))
     parser.add_argument('--offset_patch_gt', default=0)
     parser.add_argument('--size_patch_mid', default=(240, 240))
