@@ -3,12 +3,12 @@ import numpy as np
 from PIL import Image
 from refinement import get_auroc
 from refinement import get_aupro
-
-category_list = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw',
-                 'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
-category_border = [0, 83, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
 def run(args):
-
+    category_list = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill',
+                     'screw',
+                     'tile', 'toothbrush', 'transistor', 'wood', 'zipper']
+    category_border = [0, 83, 233, 365, 482, 560, 670, 794, 909, 1076, 1236, 1353, 1395, 1495, 1574, 1725]
+    
     if args.is_MVTec_small:
         category_border = [0, 25]
         category_list = ['bottle']
