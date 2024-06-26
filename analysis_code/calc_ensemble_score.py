@@ -114,10 +114,11 @@ if __name__ == '__main__':
         patchcore_score_list.append(get_scores_from_pkl(patchcore_pkl_list))
 
         if idx == 0 :
-            print("======success if =====")
+            print("======success if =======")
             gt_list = get_scores_from_pkl(gt_pkl_list)
             img_list = get_scores_from_pkl(img_pkl_list)
             fname_list = [img_pkl.strip(".pkl") for img_pkl in img_pkl_list]
+            print("========", fname_list, "=========")
 
     print("=======end for loop========")
     coor_score_np = np.array(coor_score_list)   
@@ -169,6 +170,7 @@ if __name__ == '__main__':
     print(f"==========Start save ensemble {args.category}!==========")
     
     for idx, fname in enumerate(fname_list) :
+        print("========", fname_list, "========")
         fname = fname.split("/")[-1]
         fnum = fname.split("_")[-1]
         ftype = fname.strip(f"_{fnum}")
