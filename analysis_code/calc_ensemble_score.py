@@ -93,6 +93,7 @@ if __name__ == '__main__':
     for idx, backbone in enumerate(args.backbone_list) :
         print(f"=========={args.backbone_list}!==========")
         default_root_dir = os.path.join(args.project_root_path, args.category, backbone, 'anomaly', 'lightning_logs') # ./MVTec/hazelnut
+        print("========= default_root_dir :", default_root_dir, "=========")
         result_version_list = os.listdir(default_root_dir) #잡힘
         print("=========result_version_list :", result_version_list, "=========")
         result_version_list = sorted([int(version.strip('version_')) for version in result_version_list])
