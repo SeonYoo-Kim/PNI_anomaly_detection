@@ -111,7 +111,7 @@ if __name__ == '__main__':
         #print("========patchcore_pkl_list :", patchcore_pkl_list, "=========")
         gt_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_gt.pkl')))
         #print("========gt_pkl_list :", gt_pkl_list, "=========")
-        img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0???.pkl')) + glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0??.pkl')))
+        img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_????.pkl')))
         print("========img_pkl_list :", img_pkl_list, "=========")
 
         coor_score_list.append(get_scores_from_pkl(coor_pkl_list))
