@@ -72,6 +72,37 @@ class kCenterGreedy:
 
         return idx
 
+    # def select_coreset_idxs(self, selected_idxs: Optional[List[int]] = None) -> List[int]:
+    #     """Greedily form a coreset to minimize the maximum distance of a cluster.
+    #     Args:
+    #         selected_idxs: index of samples already selected. Defaults to an empty set.
+    #     Returns:
+    #       indices of samples selected to minimize distance to cluster centers
+    #     """
+    #
+    #     if selected_idxs is None:
+    #         selected_idxs = []
+    #
+    #     if self.embedding.ndim == 2:
+    #         self.model.fit(self.embedding)
+    #         self.features = torch.Tensor(self.model.transform(self.embedding)).to(self.device)
+    #         self.reset_distances()
+    #     else:
+    #         self.features = self.embedding.reshape(self.embedding.shape[0], -1).to(self.device)
+    #         self.update_distances(cluster_centers=selected_idxs)
+    #
+    #     selected_coreset_idxs: List[int] = []
+    #     idx = int(torch.randint(high=self.n_observations, size=(1,)).item())
+    #     for _ in range(self.coreset_size):
+    #         self.update_distances(cluster_centers=[idx])
+    #         idx = self.get_new_idx()
+    #         if idx in selected_idxs:
+    #             raise ValueError("New indices should not be in selected indices.")
+    #         self.min_distances[idx] = 0
+    #         selected_coreset_idxs.append(idx)
+    #
+    #     return selected_coreset_idxs
+
     def select_coreset_idxs(self, selected_idxs: Optional[List[int]] = None) -> List[int]:
         """Greedily form a coreset to minimize the maximum distance of a cluster.
         Args:
@@ -83,6 +114,7 @@ class kCenterGreedy:
         if selected_idxs is None:
             selected_idxs = []
 
+        # Initialize embedding and features
         if self.embedding.ndim == 2:
             self.model.fit(self.embedding)
             self.features = torch.Tensor(self.model.transform(self.embedding)).to(self.device)
@@ -92,14 +124,23 @@ class kCenterGreedy:
             self.update_distances(cluster_centers=selected_idxs)
 
         selected_coreset_idxs: List[int] = []
+
+        # Initial random index selection
         idx = int(torch.randint(high=self.n_observations, size=(1,)).item())
+
         for _ in range(self.coreset_size):
             self.update_distances(cluster_centers=[idx])
             idx = self.get_new_idx()
+
             if idx in selected_idxs:
                 raise ValueError("New indices should not be in selected indices.")
+
             self.min_distances[idx] = 0
             selected_coreset_idxs.append(idx)
+
+            # Periodically clear GPU cache to manage memory
+            if _ % 100 == 0:
+                torch.cuda.empty_cache()
 
         return selected_coreset_idxs
 
