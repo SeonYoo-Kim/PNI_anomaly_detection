@@ -214,6 +214,7 @@ if __name__ == '__main__':
         category_list = ['01', '02', '03']
     if args.is_AeBAD :
         category_border = [0, 342, 653, 1380, 1818]
+        category_border = [0, 238, 459, 944, 1261]
         category_list = ['background', 'illumination', 'same', 'view']
     if args.is_VisA :
         category_border = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
@@ -240,8 +241,7 @@ if __name__ == '__main__':
     threshold_list = []
     img_threshold_list = []
     max_list = []
-    
-    
+
     for idx, gt_path in enumerate(gt_path_list) :
         amap_path = amap_path_list[idx]
         img_path = img_path_list[idx]
