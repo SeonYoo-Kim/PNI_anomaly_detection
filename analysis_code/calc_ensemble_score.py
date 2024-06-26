@@ -98,6 +98,7 @@ if __name__ == '__main__':
         result_version_list = sorted([int(version.strip('version_')) for version in result_version_list])
         print("=========sorted result_version_list :", result_version_list, "=========")
         latest_version = 'version_' + str(result_version_list[-1 * args.version_num])
+        print("========= latest_version :", latest_version, "=========")
         
         coor_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*amap_coor.pkl')))
         #print("========coor_pkl_list :", coor_pkl_list, "=========")
