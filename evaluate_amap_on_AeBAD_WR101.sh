@@ -10,10 +10,10 @@ python train_coreset_distribution.py --category view --seed 23 --train_coreset -
 
 # make ensemble score for each category and save the result in "./result/ensemble_result" repository.
 #"--backbone_list" argument is list of pretrained networks which are to ensemble. You can change category with "--category" path. 
-python analysis_code/calc_ensemble_score.py --category background --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result
-python analysis_code/calc_ensemble_score.py --category illumination --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result
-python analysis_code/calc_ensemble_score.py --category same --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result
-python analysis_code/calc_ensemble_score.py --category view --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result
+python analysis_code/calc_ensemble_score.py --category background --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result --is_AeBAD
+python analysis_code/calc_ensemble_score.py --category illumination --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result --is_AeBAD
+python analysis_code/calc_ensemble_score.py --category same --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result --is_AeBAD
+python analysis_code/calc_ensemble_score.py --category view --backbone_list WR101 --project_root_path ./result_AeBAD --ensemble_root_path ./result_AeBAD/WR101_result --is_AeBAD
 
 # convert result format and save it into "./result/ensemble_ravel" repository.
 # Add argument "--is_BTAD" if dataset is BTAD, and "--is_MVtec_small" if dataset is small version of MVTec which we provided.
