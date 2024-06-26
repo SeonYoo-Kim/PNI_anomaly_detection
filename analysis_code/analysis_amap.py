@@ -213,7 +213,7 @@ if __name__ == '__main__':
         category_border = [0, 70, 300, 741]
         category_list = ['01', '02', '03']
     if args.is_AeBAD :
-        category_border = [0, 342, 653, 1380, 1818]
+        #category_border = [0, 342, 653, 1380, 1818]
         category_border = [0, 238, 459, 944, 1261]
         category_list = ['background', 'illumination', 'same', 'view']
     if args.is_VisA :
