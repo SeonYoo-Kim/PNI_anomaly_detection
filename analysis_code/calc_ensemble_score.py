@@ -93,34 +93,40 @@ if __name__ == '__main__':
     for idx, backbone in enumerate(args.backbone_list) :
         print(f"=========={args.backbone_list}!==========")
         default_root_dir = os.path.join(args.project_root_path, args.category, backbone, 'anomaly', 'lightning_logs') # ./MVTec/hazelnut
-        print("==========default_root_dir : ", default_root_dir, "==========")
         result_version_list = os.listdir(default_root_dir)
-        print("========== result_version_list ==========")
         result_version_list = sorted([int(version.strip('version_')) for version in result_version_list])
-        print("========== sorted ==========")
         latest_version = 'version_' + str(result_version_list[-1 * args.version_num])
-        print("========== version_ ==========")
         
         coor_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*amap_coor.pkl')))
+        print("========coor_pkl_list :", coor_pkl_list, "=========")
         nb_coor_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*amap_nb_coor.pkl')))
+        print("========nb_coor_pkl_list :", nb_coor_pkl_list, "=========")
         nb_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*amap_nb.pkl')))
+        print("========nb_pkl_list :", nb_pkl_list, "=========")
         patchcore_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*amap_patchcore.pkl')))
+        print("========patchcore_pkl_list :", patchcore_pkl_list, "=========")
         gt_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_gt.pkl')))
+        print("========gt_pkl_list :", gt_pkl_list, "=========")
         img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0???.pkl')) + glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0??.pkl')))
-        
+        print("========img_pkl_list :", img_pkl_list, "=========")
+
         coor_score_list.append(get_scores_from_pkl(coor_pkl_list))
+        print("========coor_score_list :", coor_score_list, "=========")
         nb_coor_score_list.append(get_scores_from_pkl(nb_coor_pkl_list))
+        print("========nb_coor_score_list :", nb_coor_score_list, "=========")
         nb_score_list.append(get_scores_from_pkl(nb_pkl_list))
+        print("======== nb_score_list :", nb_score_list, "=========")
         patchcore_score_list.append(get_scores_from_pkl(patchcore_pkl_list))
+        print("========patchcore_score_list :", patchcore_score_list, "=========")
 
         if idx == 0 :
-            print("======success if =======")
             gt_list = get_scores_from_pkl(gt_pkl_list)
+            print("========gt_list :", gt_list, "=========")
             img_list = get_scores_from_pkl(img_pkl_list)
+            print("========img_list :", img_list, "=========")
             fname_list = [img_pkl.strip(".pkl") for img_pkl in img_pkl_list]
-            print("========", fname_list, "=========")
+            print("========fname_list :", fname_list, "=========")
 
-    print("=======end for loop========")
     coor_score_np = np.array(coor_score_list)   
     nb_coor_score_np = np.array(nb_coor_score_list)
     nb_score_np = np.array(nb_score_list)
