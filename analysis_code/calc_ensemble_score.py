@@ -118,7 +118,7 @@ if __name__ == '__main__':
         if args.is_BTAD:
             img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0???.pkl')) + glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_0??.pkl')))
         if args.is_AeBAD:
-            img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_IMG_????.pkl')))
+            img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*IMG_????.pkl')))
         # if args.is_VisA:
             # img_pkl_list = sorted(glob.glob(os.path.join(default_root_dir, latest_version, "sample", '*_IMG_????.pkl')))
         # print("========img_pkl_list :", img_pkl_list, "=========")
